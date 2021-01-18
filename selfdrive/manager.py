@@ -442,6 +442,9 @@ def manager_init():
     os.chmod(os.path.join(BASEDIR, "cereal", "libmessaging_shared.so"), 0o755)
 
 def manager_thread():
+  
+  shutdownd = Process(name="shutdorwnd",target=launcher,args=("selfdrive.shutdownd",))
+  shutdownd.start()
 
   cloudlog.info("manager start")
   cloudlog.info({"environ": os.environ})
